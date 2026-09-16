@@ -1,0 +1,3 @@
+controller,undervoltage_node_minutes,overvoltage_node_minutes,violation_node_minutes,violation_minutes,mean_voltage_deviation_pu,mean_absolute_action_pu,adaptive_voltage_deviation_reduction_percent,adaptive_action_magnitude_increase_percent
+Linear control,135,56,191,58,0.008500529759422334,0.008366050722555583,,
+Decentralized gain adaptation,0,0,0,0,0.00587089629904037,0.009075024003410901,30.934936231088077,8.474408109239237

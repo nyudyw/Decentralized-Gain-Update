@@ -1,0 +1,2 @@
+# bus,Pg,Qg,Qmax,Qmin,Vg,mBase,status,Pmax,Pmin
+1, 0, 0, 10, -10, 1, 100, 1, 10, 0

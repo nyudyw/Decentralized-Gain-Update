@@ -1,0 +1,163 @@
+{
+  "experiment": "time_varying_controller_comparison",
+  "date": "2024-11-21",
+  "samples": 720,
+  "source": {
+    "npz": "data/inputs/real_data_feeder_inputs.npz",
+    "manifest": "data/inputs/real_data_feeder_inputs_manifest.json",
+    "arrays_used": [
+      "raw_p_profiles",
+      "profile_mix_weights"
+    ]
+  },
+  "p_construction": {
+    "method": "fixed_daily_mapping",
+    "profile_gain": 21.0,
+    "ramp_amplitude": 1.8,
+    "shape_clip": 0.22,
+    "smoothing_window": 15,
+    "warmup_minutes": 60,
+    "timezone": "America/Los_Angeles",
+    "local_window": "09:00-21:00"
+  },
+  "controller": {
+    "control_action_period_minutes": 1,
+    "gain_sample_period_minutes": 1,
+    "T": 5,
+    "block_window_samples": 10,
+    "eta": 0.3,
+    "gain_regularization": 0.05,
+    "gain_seed": 588,
+    "gain_low": 0.006,
+    "gain_high": 0.018,
+    "reactive_action_limit_pu": null
+  },
+  "plot_nodes": {
+    "method": "uniform_random_without_replacement",
+    "seed": 5,
+    "population_ieee_buses": "2-33",
+    "node_count": 10,
+    "selected_ieee_buses": [
+      2,
+      3,
+      10,
+      14,
+      16,
+      17,
+      20,
+      21,
+      23,
+      32
+    ]
+  },
+  "modes": {
+    "nocontrol": {
+      "voltage_minimum": 0.535236054332222,
+      "voltage_maximum": 1.126116754497644,
+      "voltage_deviation_maximum": 0.464763945667778,
+      "voltage_deviation_mean": 0.10446105896480472,
+      "voltage_deviation_rmse": 0.14276595664457864,
+      "voltage_deviation_p95": 0.3112186698059324,
+      "voltage_violation_minutes": 631,
+      "voltage_violation_node_minutes": 14413,
+      "all_voltages_within_0p95_1p05": false,
+      "mean_absolute_action": 0.0,
+      "mean_action_l2": 0.0,
+      "maximum_absolute_action": 0.0,
+      "num_gain_updates": 0,
+      "final_gain_min": 0.007086975531339797,
+      "final_gain_max": 0.017981492422851783
+    },
+    "nolearning": {
+      "voltage_minimum": 0.9054865444096941,
+      "voltage_maximum": 1.061988269358728,
+      "voltage_deviation_maximum": 0.09451345559030588,
+      "voltage_deviation_mean": 0.008500529759422334,
+      "voltage_deviation_rmse": 0.012758044284611256,
+      "voltage_deviation_p95": 0.026537499535395376,
+      "voltage_violation_minutes": 58,
+      "voltage_violation_node_minutes": 191,
+      "all_voltages_within_0p95_1p05": false,
+      "mean_absolute_action": 0.008366050722555583,
+      "mean_action_l2": 0.07114934026693515,
+      "maximum_absolute_action": 0.08772934985936556,
+      "num_gain_updates": 0,
+      "final_gain_min": 0.007086975531339797,
+      "final_gain_max": 0.017981492422851783
+    },
+    "block": {
+      "voltage_minimum": 0.9519601860509006,
+      "voltage_maximum": 1.0337709679409786,
+      "voltage_deviation_maximum": 0.0480398139490994,
+      "voltage_deviation_mean": 0.00587089629904037,
+      "voltage_deviation_rmse": 0.008110354650955505,
+      "voltage_deviation_p95": 0.016479736172626342,
+      "voltage_violation_minutes": 0,
+      "voltage_violation_node_minutes": 0,
+      "all_voltages_within_0p95_1p05": true,
+      "mean_absolute_action": 0.009075024003410901,
+      "mean_action_l2": 0.08468093544328373,
+      "maximum_absolute_action": 0.13946937728959768,
+      "num_gain_updates": 72,
+      "final_gain_min": 0.00626317629001458,
+      "final_gain_max": 0.05904745106697464
+    }
+  },
+  "outputs": {
+    "npz": "outputs/results/time_varying_results.npz",
+    "figures": {
+      "output_dir": "outputs/results/figures",
+      "plot_buses": [
+        2,
+        3,
+        10,
+        14,
+        16,
+        17,
+        20,
+        21,
+        23,
+        32
+      ],
+      "shared_y_limits": {
+        "voltage": [
+          0.9321212860084356,
+          1.099
+        ],
+        "action": [
+          -0.017823874513490892,
+          0.10546601143980883
+        ]
+      },
+      "artifacts": {
+        "nolearning_voltage": "outputs/results/figures/nolearning_voltage_Varying_10nodes.pdf",
+        "nolearning_action": "outputs/results/figures/nolearning_action_Varying_10nodes.pdf",
+        "block_voltage": "outputs/results/figures/block_voltage_Varying_10nodes.pdf",
+        "block_action": "outputs/results/figures/block_action_Varying_10nodes.pdf"
+      }
+    },
+    "gain_figure": {
+      "output_dir": "outputs/results/figures",
+      "plot_buses": [
+        2,
+        3,
+        10,
+        14,
+        16,
+        17,
+        20,
+        21,
+        23,
+        32
+      ],
+      "gain_minimum": 0.006167877511759624,
+      "gain_maximum": 0.05577634343726319,
+      "y_limits": [
+        0.004009120382643756,
+        0.08306099969629016
+      ],
+      "artifact": "outputs/results/figures/block_gain_Varying_10nodes.pdf"
+    },
+    "summary_json": "outputs/results/summary.json"
+  }
+}

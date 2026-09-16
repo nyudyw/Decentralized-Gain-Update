@@ -1,0 +1,10 @@
+{
+    "baseMVA": 100.0,
+    "baseKV": 12.66,
+    "version": "2",
+    "name": "IEEE 33 BUS DISTRIBUTION SYSTEM",
+    "branch_rx_unit": "pu",
+    "branch_rx_source_unit": "ohm",
+    "branch_rx_conversion": "R_pu = R_ohm / (Vbase^2 / Sbase), X_pu = X_ohm / (Vbase^2 / Sbase)",
+    "branch_rx_zbase_ohm": 1.602756
+}
